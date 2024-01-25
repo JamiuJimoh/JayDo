@@ -7,13 +7,15 @@
 
 import Foundation
 
-struct TodoItem {
-    let title: String
-    let isDone: Bool
+class TodoItem {
+    var title: String
+    var isDone: Bool
+    let todoItemID: Int
     
     
-    init(title: String, isDone: Bool = false) {
+    init(todoItemID: Int, title: String, isDone: Bool = false) {
         self.title = title
         self.isDone = isDone
+        self.todoItemID = todoItemID
     }
 }

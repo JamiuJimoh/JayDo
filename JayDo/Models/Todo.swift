@@ -15,13 +15,15 @@ class Todo {
         case isCompleted
     }
     
-    let title: String
-    var items: [TodoItem] {
-        didSet {
-            setProgress()
-        }
+    let todoID: Int
+    var title: String
+    var items: [TodoItem]
+    
+    var progress: Progress {
+        guard !items.isEmpty else { return .noTask }
+        if doneCount == items.count { return .isCompleted }
+        return doneCount > 0 ? .inProgress(doneCount) : .notStarted
     }
-    var progress: Progress
     
     var doneCount: Int {
         items.reduce(0) { result, item in
@@ -43,18 +45,14 @@ class Todo {
         }
     }
     
-    init(title: String, items: [TodoItem], progress: Progress = .notStarted) {
+    init(title: String, items: [TodoItem], todoID: Int) {
         self.title = title
         self.items = items
-        self.progress = progress
-        setProgress()
+        self.todoID = todoID
     }
     
-    func setProgress() {
-        guard !items.isEmpty else { return progress = .noTask }
-            if doneCount == items.count { return progress = .isCompleted }
-            progress = doneCount > 0 ? .inProgress(doneCount) : .notStarted
+    convenience init(title: String, todoID: Int) {
+        self.init(title: title, items: [], todoID: todoID)
     }
-    
     
 }
