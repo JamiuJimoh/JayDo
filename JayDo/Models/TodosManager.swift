@@ -15,7 +15,7 @@ final class TodosManager {
     var todos = [
         Todo(title: "Football", items: [
             TodoItem(todoItemID: 1, title: "Take a shower", isDone: true),
-            TodoItem(todoItemID: 2,title: "Go And Play Ball", isDone: false),
+            TodoItem(todoItemID: 2,title: "Go to the field", isDone: false),
             
         ], todoID: 1),
         Todo(title: "Groceries", items: [

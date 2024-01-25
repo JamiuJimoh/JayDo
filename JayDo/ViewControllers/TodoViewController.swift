@@ -51,9 +51,10 @@ class TodoViewController: UITableViewController {
     private func didFinishEditing(with todo: Todo) {
         guard let index = manager.todos.firstIndex(where: {$0.todoID == todo.todoID}) else {return}
         let indexPath = IndexPath(row: index, section: 0)
-        let cell = tableView.cellForRow(at: indexPath) as! TodoCell
-        cell.todoLabel.text = todo.title
-        cell.progressLabel.text = todo.progressText
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+//        let cell = tableView.cellForRow(at: indexPath) as! TodoCell
+//        cell.todoLabel.text = todo.title
+//        cell.progressLabel.text = todo.progressText
     }
 }
 

@@ -129,11 +129,14 @@ extension TodoItemsViewController: EditTodoItemDelegate {
     
     func didFinishEditing(_ controller: EditTodoItemViewController, with item: TodoItem) {
         navigationController?.popViewController(animated: true)
-        
-        guard let index = todo.items.firstIndex(where: {$0.todoItemID == item.todoItemID}) else {return}
-        let indexPath = IndexPath(row: index, section: 0)
-        guard let cell = tableView.cellForRow(at: indexPath) as? TodoItemCell else {return}
-        cell.todoItemTitle.text = item.title
+        tableView.reloadData()
+//        guard let index = todo.items.firstIndex(where: {$0.todoItemID == item.todoItemID}) else {return}
+//        let indexPath = IndexPath(row: index, section: 0)
+//        insertAction = { [weak self] in
+//            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+//        }
+//        guard let cell = tableView.cellForRow(at: indexPath) as? TodoItemCell else {return}
+//        cell.todoItemTitle.text = item.title
     }
     
 }
